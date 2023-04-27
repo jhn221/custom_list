@@ -9,7 +9,9 @@ export const Main = styled.div`
 export const advertisementMemo = styled.div`
     border: 1px solid black;
     width: 35%;
-    height: 100%;
+    .title{
+        margin: 10px;
+    }
 `
 
 export const advertisement = styled.div`
@@ -17,12 +19,46 @@ export const advertisement = styled.div`
 `
 
 export const Memo = styled.div`
-    margin: 30px 0 0 10px ;
+    width: 95%;
+    height: 35%;
+    margin: 10px 0 0 10px ;
+    border: 1px solid black;
+    overflow: scroll;
+    div{
+        margin-bottom: 10px;
+    }
+`
+export const MemoList = styled.div`
+    width: 90%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    margin: 25px;
+    border: 1px solid black;
+`
+
+export const MemoWrite = styled.div`
+    margin: 0 10px;
+    border: 1px solid black;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input{
+        width: 90%;
+        height: 40px;
+        border: 0;
+    }
+    button{
+        height: 30px;
+    }
 `
 
 export const customer = styled.div`
     border: 1px solid black;
     width: 45%;
+    overflow: scroll;
 `
 
 export const dateFilter = styled.div`

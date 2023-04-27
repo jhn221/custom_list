@@ -7,31 +7,33 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from 'react-router-dom';
 import Detail from '../Detail/Detail';
+import { fileURLToPath } from 'url';
 
 interface memolist {
-    id:Number
+    id:number,
     value:string,
 }
 
 interface list {
-    userid:Number,
+    userid:string,
     RevDate: string,
-    name: string,
+    [name:string]: string,
     phone: string,
     patDob: string,
     memo:string
 }
 
-const Main = () => {
+const Main = (props:any) => {
 
+    // console.log(props)
     const [memo, setMemo] = useState<memolist[]>([{id:0, value:''}])
     const [selectedDate, setselectedDateDate] = useState<string>();
     const [customer, setCustomer] = useState<list[]>([]);
-    const [change, selectChange] = useState();
+    const [change, selectChange] = useState<string>('');
     const [infoValue, setInfoValue] = useState<string>("")
+    const [data, setData] = useState("");
 
-    console.log(selectedDate)
-    // console.log(date)
+    // console.log(selectedDate)
 
     const changeDate = (date:any) => {
         var year = date.getFullYear();
@@ -45,22 +47,26 @@ const Main = () => {
         axios
         .get(`http://34.22.82.239:8080/getUserList?date=${selectedDate}`)
         .then((res) => {
-            console.log(res.data.users)
+            // console.log(res.data.users)
             setCustomer(res.data.users)
+            setData(res.data.users) 
         })
         .catch((error) => {
-          console.log(error);
+            console.log(error);
         });
-      },[selectedDate])
+    },[selectedDate])
 
-      console.log(customer)
+    // props.setData(data);
 
       const memoChange = (e:any) => {
         // setMemo(...memo,id:id+1,value: e.target.value)
         console.log(memo)
       }
         const handleLogin = (e:any) => {
-            setMemo(e.target.value)      
+            setMemo({
+                ...memo,
+                // value: e.target.value,
+            })
         }
 
         // console.log(memo)
@@ -72,32 +78,47 @@ const Main = () => {
         const changeInfoValue = (e:any) => {
             setInfoValue(e.target.value)
         }
-        console.log(infoValue)
+        // let nullCheck = typeof(change) === undefined ? "name" : change
+        let filterList = customer.filter((customer) => customer[change]===infoValue)
+        console.log(filterList)
+        console.log(change)
 
         const seleteOption = (e:any) => {
             selectChange(e.target.value)
-            console.log(e.target.value)
+            // console.log(e.target.value)
         }
+    
+        
 
     return(
         <S.Main>
             <S.advertisementMemo>
                 <S.advertisement>
-                    <div>광고</div>
+                    <div className='title'>광고</div>
                         <AdList/>
                 </S.advertisement>
+                <div className='title'>메모란</div>
                 <S.Memo>
-                    <div>메모란</div>
-                    <div>
-                        {/* <div>{memo.value}</div> */}
+                    <S.MemoList>
+                        <div>dkdkk</div>
+                        <button>x</button>
+                    </S.MemoList>
+                    <S.MemoList>
+                        <div>dkdkk</div>
+                        <button>x</button>
+                    </S.MemoList>
+                </S.Memo>
+                    <S.MemoWrite>
+                        {memo.map((memo) => (
+                            <div>{memo.value}</div>
+                        ))}
                         <input
                         placeholder='메모 입력란'
                         onChange={memoChange}
                         onKeyPress={enterKeyPress}
                         ></input>
                         <button onClick={() => handleLogin}>작성</button>
-                    </div>
-                </S.Memo>
+                    </S.MemoWrite>
             </S.advertisementMemo>
             <S.customer>
                 <S.dateFilter>
@@ -134,11 +155,28 @@ const Main = () => {
                 <input onChange={changeInfoValue}>
                 </input>
                 </div>
-                {customer.length === undefined ? null : 
-                <div></div>
-                // {infoValue === customer.name ? <div></div> :
-                // null}
-            }
+                {filterList.length !== undefined ? filterList.map((filterList) => (
+                  <S.CustomerList>
+                      <Link to={`/detail/${filterList.userid}`}>
+                      <span>
+                        <div>{filterList.name}</div> |
+                        <div>{filterList.patDob}</div> |
+                      </span>
+                        <div>{filterList.phone}</div> |
+                        <div>{filterList.memo}</div> 
+                    </Link>
+                  </S.CustomerList>
+              )):filterList.map((filterList) => (
+                <S.CustomerList>
+                    <Link to={`/detail/${filterList.userid}`}>
+                    <span>
+                      <div>{filterList.name}</div> |
+                      <div>{filterList.patDob}</div> |
+                    </span>
+                      <div>{filterList.phone}</div> |
+                      <div>{filterList.memo}</div> 
+                  </Link>
+                </S.CustomerList>))}
             </S.Search>
 
         </S.Main>
