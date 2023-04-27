@@ -27,7 +27,6 @@ export const eachAd = styled.div`
     width: 100px;
     height: 500px;
     img{
-        width: 400px;
         height: 400px;
         display: flex;
         justify-content: center;
