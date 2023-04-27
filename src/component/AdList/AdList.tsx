@@ -5,8 +5,6 @@ import Slider from "react-slick";
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
-
 interface list {
     adid:Number,
     imageLink: string,
@@ -28,7 +26,6 @@ const AdList  = () => {
           console.log(error);
         });
       },[])
-      console.log(adList)
 
       const settings = {
         dots: false,
