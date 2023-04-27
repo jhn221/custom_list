@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import AdList from '../../component/AdList/AdList';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { setSourceMapRange } from 'typescript';
+import { Link } from 'react-router-dom';
+import Detail from '../Detail/Detail';
 
 interface memolist {
     id:Number
@@ -26,6 +27,8 @@ const Main = () => {
     const [memo, setMemo] = useState<memolist[]>([{id:0, value:''}])
     const [selectedDate, setselectedDateDate] = useState<string>();
     const [customer, setCustomer] = useState<list[]>([]);
+    const [change, selectChange] = useState();
+    const [infoValue, setInfoValue] = useState<string>("")
 
     console.log(selectedDate)
     // console.log(date)
@@ -61,12 +64,20 @@ const Main = () => {
         }
 
         // console.log(memo)
-      const enterKeyPress = (e:any) => {
+        const enterKeyPress = (e:any) => {
         if (e.key === "Enter") {
           handleLogin(e);
-        }
+        }}
 
-    }
+        const changeInfoValue = (e:any) => {
+            setInfoValue(e.target.value)
+        }
+        console.log(infoValue)
+
+        const seleteOption = (e:any) => {
+            selectChange(e.target.value)
+            console.log(e.target.value)
+        }
 
     return(
         <S.Main>
@@ -89,29 +100,45 @@ const Main = () => {
                 </S.Memo>
             </S.advertisementMemo>
             <S.customer>
-            <div>손님 {customer.length === undefined ? 0 : customer.length}명</div>
-            <DatePicker
-                dateFormat="yyyyMMdd" // 날짜 형식 설정
-                className="input-datepicker" // 클래스 명 지정 css주기 위해
-                // minDate={new Date()} // 선택할 수 있는 최소 날짜값 지정
-                closeOnScroll={true} // 스크롤을 움직였을 때 자동으로 닫히도록 설정 기본값 false
-                // placeholderText="공동구매 시작일 선택" // placeholder
-                // selected={selectedDate} // value  // 날짜를 선택하였을 때 실행될 함수
-                onChange={(date: Date) => changeDate(date)}
-              />
+                <S.dateFilter>
+                    <h5>손님 {customer.length === undefined ? 0 : customer.length}명</h5>
+                    <DatePicker
+                        dateFormat="yyyyMMdd" // 날짜 형식 설정
+                        className="input-datepicker" // 클래스 명 지정 css주기 위해
+                        closeOnScroll={true} // 스크롤을 움직였을 때 자동으로 닫히도록 설정 기본값 false
+                        // selected={selectedDate}// value  // 날짜를 선택하였을 때 실행될 함수
+                        onChange={(date: Date) => changeDate(date)}
+                        />
+                </S.dateFilter>
               {customer.length !== undefined ? customer.map((customer) => (
                   <S.CustomerList>
+                      <Link to={`/detail/${customer.userid}`}>
                       <span>
                         <div>{customer.name}</div> |
                         <div>{customer.patDob}</div> |
                         <div>{customer.phone}</div> |
                       </span>
                       <div>{customer.memo}</div> 
+                    </Link>
                   </S.CustomerList>
               )):null}
             </S.customer>
             <S.Search>
-                <div>손님 검색 필터</div>
+                <h5>손님 검색 필터</h5>
+                <div>
+                <select onChange={seleteOption}>
+                    <option value="name">이름</option>
+                    <option value="phone">전화번호</option>
+                    <option value="RevDate">생년월일</option>
+                </select>
+                <input onChange={changeInfoValue}>
+                </input>
+                </div>
+                {customer.length === undefined ? null : 
+                <div></div>
+                // {infoValue === customer.name ? <div></div> :
+                // null}
+            }
             </S.Search>
 
         </S.Main>
