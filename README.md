@@ -9,30 +9,7 @@
 
 ##프로젝트 구조
 
-src
- ┣ Header<br/>
- ┃ ┣ Header.tsx
- ┃ ┗ styled.ts
- ┣ component
- ┃ ┣ AdList
- ┃ ┃ ┣ AdList.tsx -> 광고(image, title)들을 볼 수 있도록 구현된 컴포넌트 
- ┃ ┃ ┗ styled.ts
- ┃ ┗ Memo
- ┃ ┃ ┣ memo.tsx -> 메모를 입력, 조회, 수정, 삭제할 수 있도록 구현된 컴포넌트
- ┃ ┃ ┗ styled.ts
- ┣ page
- ┃ ┣ Detail
- ┃ ┃ ┣ Detail.tsx -> Main 화면에서 조회된 예약손님 중 손님 각각의 detail정보를 볼 수 있는 페이지
- ┃ ┃ ┗ styled.ts
- ┃ ┗ Main
- ┃ ┃ ┣ Main.tsx -> 해당 프로젝트의 main 화면을 담당하는 페이지
- ┃ ┃ ┗ styled.ts
- ┣ App.css
- ┣ App.tsx
- ┣ index.css
- ┣ index.tsx
- ┗ reportWebVitals.ts
- 
+https://user-images.githubusercontent.com/98151533/235186534-424a0ef8-c3cd-4d31-9a0b-0226e7eedcca.png
  프로젝트 구조는 위와 같으며, route로 연결되는 두 페이지 (detail, main)는 page폴더 안에, 컴포넌트로 사용되는 (memo, adList)는 컴포넌트 파일안으로 분리하였습니다.
  또한 각각의 스타일을 담당하는 css(style-componnt) 코드를 styled 파일로 분리하여 코드 가독성을 높였습니다.
  
