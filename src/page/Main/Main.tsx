@@ -23,17 +23,17 @@ interface list {
     memo:string
 }
 
-const Main = (props:any) => {
+const Main = () => {
 
     // console.log(props)
     const [memo, setMemo] = useState<memolist[]>([{id:0, value:''}])
-    const [selectedDate, setselectedDateDate] = useState<string>();
+    const [selectedDate, setselectedDateDate] = useState<string>('');
     const [customer, setCustomer] = useState<list[]>([]);
-    const [change, selectChange] = useState<string>('');
+    const [change, selectChange] = useState<string>('name');
     const [infoValue, setInfoValue] = useState<string>("")
     const [data, setData] = useState("");
 
-    // console.log(selectedDate)
+    console.log(customer)
 
     const changeDate = (date:any) => {
         var year = date.getFullYear();
@@ -42,12 +42,13 @@ const Main = (props:any) => {
         var yyyyMMdd = year + month  + day;
         setselectedDateDate(yyyyMMdd)
     }
+    localStorage.setItem("Date",selectedDate)
 
     useEffect(()=> {
         axios
         .get(`http://34.22.82.239:8080/getUserList?date=${selectedDate}`)
         .then((res) => {
-            // console.log(res.data.users)
+            console.log(res.data.users)
             setCustomer(res.data.users)
             setData(res.data.users) 
         })
@@ -78,16 +79,17 @@ const Main = (props:any) => {
         const changeInfoValue = (e:any) => {
             setInfoValue(e.target.value)
         }
-        // let nullCheck = typeof(change) === undefined ? "name" : change
+
         let filterList = customer.filter((customer) => customer[change]===infoValue)
-        console.log(filterList)
-        console.log(change)
+        // console.log(filterList)
+        // console.log(change)
 
         const seleteOption = (e:any) => {
             selectChange(e.target.value)
             // console.log(e.target.value)
         }
-    
+        const nowDate = new Date();
+ 
         
 
     return(
@@ -135,9 +137,16 @@ const Main = (props:any) => {
                   <S.CustomerList>
                       <Link to={`/detail/${customer.userid}`}>
                       <span>
-                        <div>{customer.name}</div> |
-                        <div>{customer.patDob}</div> |
-                        <div>{customer.phone}</div> |
+                        <div>{customer.name}</div> | 
+                        <div>
+                            {Number(customer.patDob.slice(7)) %2 === 0 ? "여" : "남"}
+                            /{
+                                Number(customer.patDob.substring(0,2)) > 23 ? 
+                                nowDate.getFullYear() - (Number(customer.patDob.substring(0,2)) + 1900) :
+                                nowDate.getFullYear() - (Number(customer.patDob.substring(0,2)) + 2000) }
+                            </div> |
+                        <div>{customer.patDob}</div> |  
+                        <div>{customer.phone}</div>
                       </span>
                       <div>{customer.memo}</div> 
                     </Link>
@@ -150,33 +159,32 @@ const Main = (props:any) => {
                 <select onChange={seleteOption}>
                     <option value="name">이름</option>
                     <option value="phone">전화번호</option>
-                    <option value="RevDate">생년월일</option>
+                    <option value="patDob">생년월일</option>
                 </select>
-                <input onChange={changeInfoValue}>
+                <input 
+                    onChange={changeInfoValue}
+                    placeholder="  🔍 장티엔">
                 </input>
                 </div>
                 {filterList.length !== undefined ? filterList.map((filterList) => (
-                  <S.CustomerList>
+                  <S.SearchCustomerList>
                       <Link to={`/detail/${filterList.userid}`}>
                       <span>
                         <div>{filterList.name}</div> |
-                        <div>{filterList.patDob}</div> |
+                        <div>
+                        {Number(filterList.patDob.slice(7)) %2 === 0 ? "여" : "남"}
+                            /{
+                                Number(filterList.patDob.substring(0,2)) > 23 ? 
+                                nowDate.getFullYear() - (Number(filterList.patDob.substring(0,2)) + 1900) :
+                                nowDate.getFullYear() - (Number(filterList.patDob.substring(0,2)) + 2000) }
+                            </div> | 
+                        <div>{filterList.patDob}</div>
                       </span>
-                        <div>{filterList.phone}</div> |
+                        <div>{filterList.phone}</div>
                         <div>{filterList.memo}</div> 
                     </Link>
-                  </S.CustomerList>
-              )):filterList.map((filterList) => (
-                <S.CustomerList>
-                    <Link to={`/detail/${filterList.userid}`}>
-                    <span>
-                      <div>{filterList.name}</div> |
-                      <div>{filterList.patDob}</div> |
-                    </span>
-                      <div>{filterList.phone}</div> |
-                      <div>{filterList.memo}</div> 
-                  </Link>
-                </S.CustomerList>))}
+                  </S.SearchCustomerList>
+              )):null}
             </S.Search>
 
         </S.Main>
