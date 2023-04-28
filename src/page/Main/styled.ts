@@ -57,7 +57,7 @@ export const MemoWrite = styled.div`
 
 export const customer = styled.div`
     border: 1px solid black;
-    width: 45%;
+    width: 40%;
     overflow: scroll;
 `
 
@@ -95,20 +95,47 @@ export const CustomerList = styled.div`
     font-size: 20px;
     span{
         display: flex;
+        justify-content: space-around;
         margin: 20px;
     }
     div{
-        margin-left: 20px;
+        margin: 0 20px;
     }
 `
 
 export const Search = styled.div`
     border: 1px solid black;
-    width: 20%;
+    width: 25%;
     h5{
         margin-left: 15px;
     }
     div{
         margin: 20px;
+    }
+    input{
+        border-radius: 20px;
+        height: 20px;
+    }
+    select{
+        width: 50%;
+        margin-right: 10px;
+        height: 25px;
+    }
+        
+    
+`
+
+export const SearchCustomerList=styled(CustomerList)`
+    height: 13%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+    span{
+        display: flex;
+        margin: 0px;
+    }
+    div{
+        margin: 10px;
     }
 `
