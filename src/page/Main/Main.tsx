@@ -23,7 +23,6 @@ const Main = () => {
     const [customer, setCustomer] = useState<list[]>([]);
     const [change, selectChange] = useState<string>('name');
     const [infoValue, setInfoValue] = useState<string>("")
-    const [data, setData] = useState("");
 
 
     const changeDate = (date:any) => {
@@ -40,7 +39,6 @@ const Main = () => {
         .get(`http://34.22.82.239:8080/getUserList?date=${selectedDate}`)
         .then((res) => {
             setCustomer(res.data.users)
-            setData(res.data.users) 
         })
         .catch((error) => {
             console.log(error);
@@ -52,7 +50,8 @@ const Main = () => {
         }
 
         let filterList = customer.filter((customer) => customer[change] === infoValue)
-        let filterListId = filterList[0]?.userid
+        let filterListId1 = filterList[0]?.userid
+        let filterListId2 = filterList[1]?.userid
 
         const seleteOption = (e:any) => {
             selectChange(e.target.value)
@@ -78,14 +77,16 @@ const Main = () => {
                         dateFormat="yyyyMMdd" // 날짜 형식 설정
                         className="input-datepicker" // 클래스 명 지정 css주기 위해
                         closeOnScroll={true} // 스크롤을 움직였을 때 자동으로 닫히도록 설정 기본값 false
-                        value={selectedDate} // 날짜를 선택하였을 때 실행될 함수
+                        value={selectedDate ? `${selectedDate.slice(0,4)}/${selectedDate.slice(4,6)}/${selectedDate.slice(6,8)}`: "날짜를 선택해주세요" } // 날짜를 선택하였을 때 실행될 함수
                         onChange={(date: Date) => changeDate(date)}
                         />
-                    <FaCalendarAlt/>
+                    <FaCalendarAlt style={{"cursor": "pointer"}}/>
                     </label>
                 </S.dateFilter>
               {customer.length !== undefined ? customer.map((customer) => (
-                  <S.CustomerList className={customer.userid === filterListId ? "filtered" : "unfilterd"} key={customer.userid}>
+                  <S.CustomerList 
+                    className={customer.userid === filterListId1 || customer.userid === filterListId2 ? "filtered" : "unfilterd"} 
+                    key={customer.userid}>
                       <Link to={`/detail/${customer.userid}`}>
                       <span>
                         <div>{customer.name}</div> | 
@@ -137,7 +138,6 @@ const Main = () => {
                   </S.SearchCustomerList>
               )):null}
             </S.Search>
-
         </S.Main>
     )
 }
