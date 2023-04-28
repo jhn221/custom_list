@@ -59,6 +59,9 @@ export const customer = styled.div`
     border: 1px solid black;
     width: 40%;
     overflow: scroll;
+    .filtered{
+        background-color: aliceblue;
+    }
 `
 
 export const dateFilter = styled.div`
@@ -95,7 +98,6 @@ export const dateFilter = styled.div`
 export const CustomerList = styled.div`
     width: 92%;
     height: 10%;
-    background-color: aliceblue;
     display: flex;
     flex-direction: column;
     border: 1px solid black;

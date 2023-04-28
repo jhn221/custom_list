@@ -25,7 +25,6 @@ const Main = () => {
     const [infoValue, setInfoValue] = useState<string>("")
     const [data, setData] = useState("");
 
-    // console.log(customer)
 
     const changeDate = (date:any) => {
         var year = date.getFullYear();
@@ -53,6 +52,7 @@ const Main = () => {
         }
 
         let filterList = customer.filter((customer) => customer[change] === infoValue)
+        let filterListId = filterList[0]?.userid
 
         const seleteOption = (e:any) => {
             selectChange(e.target.value)
@@ -78,14 +78,14 @@ const Main = () => {
                         dateFormat="yyyyMMdd" // 날짜 형식 설정
                         className="input-datepicker" // 클래스 명 지정 css주기 위해
                         closeOnScroll={true} // 스크롤을 움직였을 때 자동으로 닫히도록 설정 기본값 false
-                        // selected={selectedDate}// value  // 날짜를 선택하였을 때 실행될 함수
+                        value={selectedDate} // 날짜를 선택하였을 때 실행될 함수
                         onChange={(date: Date) => changeDate(date)}
                         />
                     <FaCalendarAlt/>
                     </label>
                 </S.dateFilter>
               {customer.length !== undefined ? customer.map((customer) => (
-                  <S.CustomerList key={customer.userid}>
+                  <S.CustomerList className={customer.userid === filterListId ? "filtered" : "unfilterd"} key={customer.userid}>
                       <Link to={`/detail/${customer.userid}`}>
                       <span>
                         <div>{customer.name}</div> | 
