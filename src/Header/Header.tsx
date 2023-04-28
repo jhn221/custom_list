@@ -14,7 +14,7 @@ const Header = () => {
             </Link>
             <input className='searchBar'>
             </input>
-            <button></button>
+            <button>🔍</button>
 
 
         </S.HeaderContainer>

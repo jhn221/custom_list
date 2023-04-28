@@ -16,5 +16,6 @@ export const HeaderContainer = styled.div`
         height: 50%;
         border-radius: 20px;
         margin-right: 20px;
+        text-align: left;
     }
 `

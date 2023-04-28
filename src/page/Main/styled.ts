@@ -63,21 +63,29 @@ export const customer = styled.div`
 
 export const dateFilter = styled.div`
     display: flex;
+    justify-items: flex-end;
+    align-items: center;
     margin: 0 15px;
-    display: flex;
-    /* align-items: baseline */
-    h5{
-        width: 50%;
+    label{
+        width: 40%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        svg{
+            margin: 10px;
+        }
     }
-    /* .input-datepicker{
+    h4{
+        width: 20%;
+    }
+    .input-datepicker{
         margin: 20px;
-    } */
+        height: 25px;
+
+    }
     .react-datepicker-wrapper {
         display: inline-block;
-        padding: 0;
-        border: 0;
-        width: 100%;
-        height: 23px;
+        width: 60%;
     }
     .react-datepicker-popper[data-placement^=top] .react-datepicker__triangle::before, .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::before, .react-datepicker-popper[data-placement^=top] .react-datepicker__triangle::after, .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::after {
         border: 0px solid transparent;
@@ -106,7 +114,7 @@ export const CustomerList = styled.div`
 export const Search = styled.div`
     border: 1px solid black;
     width: 25%;
-    h5{
+    h4{
         margin-left: 15px;
     }
     div{
