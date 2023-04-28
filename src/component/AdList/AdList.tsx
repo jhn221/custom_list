@@ -29,12 +29,10 @@ const AdList  = () => {
 
       const settings = {
         dots: false,
-        // fade: true,
         infinite: true,
         speed: 50,
         autoplay: true,
         pauseOnHover: true,
-        // dotsClass: "dots_custom"
       };
 
       return(

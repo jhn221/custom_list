@@ -57,27 +57,50 @@ export const MemoWrite = styled.div`
 
 export const customer = styled.div`
     border: 1px solid black;
-    width: 45%;
+    width: 40%;
     overflow: scroll;
+    .filtered{
+        background-color: aliceblue;
+    }
 `
 
 export const dateFilter = styled.div`
     display: flex;
+    justify-items: flex-end;
+    align-items: center;
     margin: 0 15px;
-    display: flex;
-    /* align-items: baseline */
-    h5{
-        width: 50%;
+    label{
+        width: 40%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        svg{
+            margin: 10px;
+        }
     }
-    /* .input-datepicker{
+    h4{
+        width: 20%;
+    }
+    .input-datepicker{
         margin: 20px;
-    } */
+        height: 25px;
+        
+    }
+    .react-datepicker {
+        font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+        font-size: 0.8rem;
+        background-color: #fff;
+        color: #000;
+        border: 1px solid #aeaeae;
+        border-radius: 0.3rem;
+        display: inline-block;
+        position: relative;
+        top: -30px;
+        left: 20px;
+    }
     .react-datepicker-wrapper {
         display: inline-block;
-        padding: 0;
-        border: 0;
-        width: 100%;
-        height: 23px;
+        width: 60%;
     }
     .react-datepicker-popper[data-placement^=top] .react-datepicker__triangle::before, .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::before, .react-datepicker-popper[data-placement^=top] .react-datepicker__triangle::after, .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::after {
         border: 0px solid transparent;
@@ -87,7 +110,6 @@ export const dateFilter = styled.div`
 export const CustomerList = styled.div`
     width: 92%;
     height: 10%;
-    background-color: aliceblue;
     display: flex;
     flex-direction: column;
     border: 1px solid black;
@@ -95,20 +117,52 @@ export const CustomerList = styled.div`
     font-size: 20px;
     span{
         display: flex;
+        justify-content: space-around;
+        align-items: center;
         margin: 20px;
     }
     div{
-        margin-left: 20px;
+        margin: 0 20px;
+    }
+    a{
+        text-decoration-line:none;
+        color: black;
     }
 `
 
 export const Search = styled.div`
     border: 1px solid black;
-    width: 20%;
-    h5{
+    width: 25%;
+    h4{
         margin-left: 15px;
     }
     div{
         margin: 20px;
+    }
+    input{
+        border-radius: 20px;
+        height: 20px;
+    }
+    select{
+        width: 50%;
+        margin-right: 10px;
+        height: 25px;
+    }
+        
+    
+`
+
+export const SearchCustomerList=styled(CustomerList)`
+    height: 13%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+    span{
+        display: flex;
+        margin: 0px;
+    }
+    div{
+        margin: 10px;
     }
 `
