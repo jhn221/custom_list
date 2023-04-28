@@ -84,7 +84,19 @@ export const dateFilter = styled.div`
     .input-datepicker{
         margin: 20px;
         height: 25px;
-
+        
+    }
+    .react-datepicker {
+        font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+        font-size: 0.8rem;
+        background-color: #fff;
+        color: #000;
+        border: 1px solid #aeaeae;
+        border-radius: 0.3rem;
+        display: inline-block;
+        position: relative;
+        top: -30px;
+        left: 20px;
     }
     .react-datepicker-wrapper {
         display: inline-block;
@@ -106,10 +118,15 @@ export const CustomerList = styled.div`
     span{
         display: flex;
         justify-content: space-around;
+        align-items: center;
         margin: 20px;
     }
     div{
         margin: 0 20px;
+    }
+    a{
+        text-decoration-line:none;
+        color: black;
     }
 `
 
