@@ -1,46 +1,60 @@
-# Getting Started with Create React App
+## 예약 손님 확인
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+예약 손님을 날짜에 맞게 조회할 수 있고, 조회된 손님 중 정보(이름, 전화번호, 생년월일)을 이용해 검색할 수 있는 사이트입니다.
+조회된 간단한 정보를 눌러 해당 손님의 자세한 정보를 확인할 수 있습니다.
+손님 정보 외에도 광고를 확인하고 간단한 메모를 작성, 조회, 삭제, 수정할 수 있습니다.
+(1920px(width) * 1080px(height) 사이즈에 맞춰 제작되었습니다)
 
-## Available Scripts
+</br></br>
 
-In the project directory, you can run:
+##프로젝트 구조
+src
+ ┣ Header
+ ┃ ┣ Header.tsx
+ ┃ ┗ styled.ts
+ ┣ component
+ ┃ ┣ AdList
+ ┃ ┃ ┣ AdList.tsx -> 광고(image, title)들을 볼 수 있도록 구현된 컴포넌트 
+ ┃ ┃ ┗ styled.ts
+ ┃ ┗ Memo
+ ┃ ┃ ┣ memo.tsx -> 메모를 입력, 조회, 수정, 삭제할 수 있도록 구현된 컴포넌트
+ ┃ ┃ ┗ styled.ts
+ ┣ page
+ ┃ ┣ Detail
+ ┃ ┃ ┣ Detail.tsx -> Main 화면에서 조회된 예약손님 중 손님 각각의 detail정보를 볼 수 있는 페이지
+ ┃ ┃ ┗ styled.ts
+ ┃ ┗ Main
+ ┃ ┃ ┣ Main.tsx -> 해당 프로젝트의 main 화면을 담당하는 페이지
+ ┃ ┃ ┗ styled.ts
+ ┣ App.css
+ ┣ App.tsx
+ ┣ index.css
+ ┣ index.tsx
+ ┗ reportWebVitals.ts
+ 
+ 프로젝트 구조는 위와 같으며, route로 연결되는 두 페이지 (detail, main)는 page폴더 안에, 컴포넌트로 사용되는 (memo, adList)는 컴포넌트 파일안으로 분리하였습니다.
+ 또한 각각의 스타일을 담당하는 css(style-componnt) 코드를 styled 파일로 분리하여 코드 가독성을 높였습니다.
+ 
 
-### `npm start`
+## 🗓️ 프로젝트 기간
+- 2023.04.28 ~ 2023.04.29
+</br></br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 👨‍👩‍👧‍👦 Member
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+| 장한나(FE) |
+|       :-: |
+| [jhn221](https://github.com/jhn221) |
+</br></br>
 
-### `npm test`
+## :low_brightness: 기술 스텍
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Front
 
-### `npm run build`
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=black"> <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=React_Router&logoColor=white"/> <img src="https://img.shields.io/badge/Axios-181717?style=for-the-badge&logo=Axios&logoColor=white"> <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/TypeScript-FFC000?style=for-the-badge&logo=typeScript&logoColor=black"/> 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 프로젝트 실행 방법
+해당 파일을 clone 받은 후 ```npm install``` 작업을 통해서 프로젝트에 포함된 라이브러리를 설치하는 작업을 우선 진행해야 합니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+intall이 완료되었다면 ```npm start``` 명령어를 통해서 development mode안([http://localhost:3000](http://localhost:3000)에서의 실제 구동 화면을 확인할 수 있습니다.
