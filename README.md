@@ -12,9 +12,9 @@
 src
 
  ┣ Header
- 
+
  ┃ ┣ Header.tsx
- 
+
  ┃ ┗ styled.ts
  
  ┣ component
