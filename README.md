@@ -20,15 +20,10 @@ src
  ┣ component
  
  ┃ ┣ AdList
- 
  ┃ ┃ ┣ AdList.tsx -> 광고(image, title)들을 볼 수 있도록 구현된 컴포넌트 
- 
  ┃ ┃ ┗ styled.ts
- 
  ┃ ┗ Memo
- 
  ┃ ┃ ┣ memo.tsx -> 메모를 입력, 조회, 수정, 삭제할 수 있도록 구현된 컴포넌트
- 
  ┃ ┃ ┗ styled.ts
  ┣ page
  ┃ ┣ Detail
