@@ -10,11 +10,10 @@ const Memo = () => {
 
     const [memos, setMemos] = useState<MemoType[]>([]);
     const [inputMemo, setInputMemo] = useState<string>("");
-    const [edit, setEdit] = useState<boolean>(false);
     const [selectedMemoId, setSelectedMemoId] = useState<number | null>(null);
 
+    const memoData = localStorage.getItem("memos");
     useEffect(() => {
-        const memoData = localStorage.getItem("memos");
         if (memoData) {
           setMemos(JSON.parse(memoData));
         }
@@ -39,7 +38,6 @@ const Memo = () => {
     };
 
     const handleEditMemo = (id: number, newContent: string) => {
-      setEdit(true)
         const updatedMemoList = memos.map((memo) => {
           if (memo.id === id) {
             return {
