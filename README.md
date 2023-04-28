@@ -8,16 +8,27 @@
 </br></br>
 
 ##프로젝트 구조
+
 src
+
  ┣ Header
+ 
  ┃ ┣ Header.tsx
+ 
  ┃ ┗ styled.ts
+ 
  ┣ component
+ 
  ┃ ┣ AdList
+ 
  ┃ ┃ ┣ AdList.tsx -> 광고(image, title)들을 볼 수 있도록 구현된 컴포넌트 
+ 
  ┃ ┃ ┗ styled.ts
+ 
  ┃ ┗ Memo
+ 
  ┃ ┃ ┣ memo.tsx -> 메모를 입력, 조회, 수정, 삭제할 수 있도록 구현된 컴포넌트
+ 
  ┃ ┃ ┗ styled.ts
  ┣ page
  ┃ ┣ Detail
@@ -57,4 +68,4 @@ src
 ## 프로젝트 실행 방법
 해당 파일을 clone 받은 후 ```npm install``` 작업을 통해서 프로젝트에 포함된 라이브러리를 설치하는 작업을 우선 진행해야 합니다.
 
-intall이 완료되었다면 ```npm start``` 명령어를 통해서 development mode안([http://localhost:3000](http://localhost:3000)에서의 실제 구동 화면을 확인할 수 있습니다.
+intall이 완료되었다면 ```npm start``` 명령어를 통해서 development mode안([http://localhost:3000](http://localhost:3000))에서의 구동 화면을 확인할 수 있습니다.
