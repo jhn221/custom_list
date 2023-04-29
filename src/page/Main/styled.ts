@@ -87,19 +87,10 @@ export const dateFilter = styled.div`
         
     }
     .react-datepicker {
-        font-family: "Helvetica Neue", helvetica, arial, sans-serif;
-        font-size: 0.8rem;
-        background-color: #fff;
-        color: #000;
-        border: 1px solid #aeaeae;
-        border-radius: 0.3rem;
-        display: inline-block;
-        position: relative;
         top: -30px;
         left: 20px;
     }
     .react-datepicker-wrapper {
-        display: inline-block;
         width: 60%;
     }
     .react-datepicker-popper[data-placement^=top] .react-datepicker__triangle::before, .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::before, .react-datepicker-popper[data-placement^=top] .react-datepicker__triangle::after, .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::after {
@@ -147,9 +138,7 @@ export const Search = styled.div`
         width: 50%;
         margin-right: 10px;
         height: 25px;
-    }
-        
-    
+    }    
 `
 
 export const SearchCustomerList=styled(CustomerList)`
