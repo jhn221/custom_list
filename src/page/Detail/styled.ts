@@ -16,6 +16,6 @@ export const Detail = styled.div`
         margin-bottom: 25px;
     }
     .memo{
-        margin-top: 10px;
+        margin-top: 20px;
     }
 `

@@ -1,10 +1,5 @@
 import styled from "styled-components"
 
-export const MemoArea = styled.div`
-    width: 100%;
-    height: 40%;
-`
-
 export const Memo = styled.div`
     width: 95%;
     height: 14em;
@@ -13,7 +8,6 @@ export const Memo = styled.div`
     overflow: scroll;
 `
 export const MemoList = styled.div`
-    width: 90%;
     height: 40px;
     display: flex;
     justify-content: space-between;

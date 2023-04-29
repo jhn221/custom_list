@@ -3,27 +3,17 @@ import styled from "styled-components";
 
 export const Listcontainer = styled.div`
     width: 100%;
-    margin-left:60px;
+    margin-left:30px;
     .item{
-        width: 80%;
-        height: 100%;
-    }
-    .slick-prev:before,
-    .slick-next:before{
-        font-family: 'slick';
-        font-size: 20px;
-        line-height: 1;
-        opacity: 0.9;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+        width: 90%;
     }
     .slick-prev{
-        left: 15px;
+        left: 25px;
         z-index: 2;
     }
 
     .slick-next{
-        left: 500px;
+        left: 550px;
     }
 `
 
