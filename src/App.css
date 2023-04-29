@@ -3,12 +3,7 @@
   width: 1920px;
   height: 1080px;
   justify-content: space-around;
-
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  margin: 0;
 }
 
 .App-header {
@@ -21,6 +16,6 @@
   font-size: calc(10px + 2vmin);
 }
 
-.App-link {
-  color: #61dafb;
+body{
+  margin: 0;
 }
