@@ -24,6 +24,7 @@ const Memo = () => {
         localStorage.setItem("memos", JSON.stringify(memos));
     }, [memos]);
 
+    //메모 추가
     const handleAddMemo = () => {
       if(inputMemo === "")
       {alert("검색어를 입력하세요")}
@@ -37,28 +38,30 @@ const Memo = () => {
       }
     };
 
+    //메모 수정
     const handleEditMemo = (id: number, newContent: string) => {
-        const updatedMemoList = memos.map((memo) => {
-          if (memo.id === id) {
-            return {
-              ...memo,
-              content: newContent,
-            };
-          } else {
-            return memo;
-          }
-        });
-        setMemos(updatedMemoList);
-        localStorage.setItem("memos", JSON.stringify(updatedMemoList));
-      };
+      const updatedMemoList = memos.map((memo) => {
+        if (memo.id === id) {
+          return {
+            ...memo,
+            content: newContent,
+          };
+        } else {
+        return memo;
+        }
+      });
+      setMemos(updatedMemoList);
+      localStorage.setItem("memos", JSON.stringify(updatedMemoList));
+    };
 
+    //메모 삭제
     const handleDeleteMemo = (id: number) => {
-        const filteredMemos = memos.filter((memo) => memo.id !== id);
-        setMemos(filteredMemos);
+      const filteredMemos = memos.filter((memo) => memo.id !== id);
+      setMemos(filteredMemos);
     };
 
   return (
-    <S.MemoArea>
+    <div>
       <S.Memo>
         {memos.map((memo) => (
           <S.MemoList key={memo.id}>
@@ -87,6 +90,7 @@ const Memo = () => {
           </S.MemoList>
         ))}
       </S.Memo>
+
       <S.MemoWrite>
         <input
           placeholder="메모 입력란"
@@ -101,7 +105,7 @@ const Memo = () => {
         />
         <button onClick={handleAddMemo}>작성</button>
       </S.MemoWrite>
-    </S.MemoArea>
+    </div>
 )
 }
 

@@ -31,12 +31,14 @@ const Detail = () => {
 
   const userDetail = customer.filter((customer) => Number(id) === customer.userid);
 
+  //나이 및 성별 계산
   const nowDate = new Date();
   const userAge = Number(userDetail[0]?.patDob.substring(0,2)) > 23 ? Number(userDetail[0]?.patDob.substring(0,2)) + 1900 : Number(userDetail[0]?.patDob.substring(0,2)) + 2000 ;
   const age =  nowDate.getFullYear() - userAge;
 
   const gender = Number(userDetail[0]?.patDob.slice(7)) %2 === 0 ? "여자" : "남자";
 
+  //날짜 형태 변경
   const year =  userDetail[0]?.RevDate.slice(2,4);
   const month = userDetail[0]?.RevDate.slice(5,6);
   const date = userDetail[0]?.RevDate.slice(6,8);
