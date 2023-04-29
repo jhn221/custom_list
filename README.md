@@ -6,10 +6,9 @@
 페이지의 header부분을 이용해 home으로 이동할 수 있고, 화살표를 눌러 전페이지로 가기, 앞페이지로 가기 도 가능합니다.
 
 (1920px(width) * 1080px(height) 사이즈에 맞춰 제작되었습니다)
-
 </br></br>
 
-##프로젝트 구조
+## 프로젝트 구조
 
 <img src = https://user-images.githubusercontent.com/98151533/235186534-424a0ef8-c3cd-4d31-9a0b-0226e7eedcca.png width = "700">
  프로젝트 구조는 위와 같으며, route로 연결되는 두 페이지 (detail, main)는 page폴더 안에, 컴포넌트로 사용되는 (memo, adList)는 컴포넌트 파일안으로 분리하였습니다.
